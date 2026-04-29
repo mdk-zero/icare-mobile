@@ -1,41 +1,158 @@
-// Fallback for using MaterialIcons on Android and web.
-
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { SymbolWeight, SymbolViewProps } from 'expo-symbols';
 import { ComponentProps } from 'react';
 import { OpaqueColorValue, type StyleProp, type TextStyle } from 'react-native';
 
-type IconMapping = Record<SymbolViewProps['name'], ComponentProps<typeof MaterialIcons>['name']>;
-type IconSymbolName = keyof typeof MAPPING;
+export const ICON_NAMES = {
+  house: 'home',
+  person: 'person',
+  heart: 'favorite',
+  clipboard: 'assignment',
+  document: 'description',
+  bell: 'notifications',
+  'chart-bar': 'bar-chart',
+  star: 'star',
+  checkmark: 'check-circle',
+  clock: 'schedule',
+  warning: 'warning',
+  info: 'info',
+  'plus-circle': 'add-circle',
+  gear: 'settings',
+  help: 'help',
+  'menu-book': 'menu-book',
+  'local-hospital': 'local-hospital',
+  'medical-services': 'medical-services',
+  'monitor-heart': 'monitor-heart',
+  accessibility: 'accessibility',
+  school: 'school',
+  'trending-up': 'trending-up',
+  'trending-down': 'trending-down',
+  'arrow-forward': 'arrow-forward',
+  'arrow-back': 'arrow-back',
+  close: 'close',
+  menu: 'menu',
+  search: 'search',
+  'filter-list': 'filter-list',
+  'grid-view': 'grid-view',
+  list: 'list',
+  calendar: 'calendar-today',
+  timelapse: 'timelapse',
+  group: 'group',
+  people: 'people',
+  phone: 'phone',
+  mail: 'email',
+  lock: 'lock',
+  visibility: 'visibility',
+  'visibility-off': 'visibility-off',
+  delete: 'delete',
+  edit: 'edit',
+  share: 'share',
+  download: 'download',
+  cloud: 'cloud',
+  'cloud-done': 'cloud-done',
+  wifi: 'wifi',
+  'battery-full': 'battery-full',
+  thermostat: 'thermostat',
+  air: 'air',
+  'water-drop': 'water-drop',
+  'favorite-border': 'favorite-border',
+  psychology: 'psychology',
+  medication: 'medication',
+  hotel: 'hotel',
+  'medical-information': 'medical-information',
+  'line-weight': 'line-weight',
+  'insert-drive-file': 'insert-drive-file',
+  folder: 'folder',
+  flag: 'flag',
+  'track-changes': 'track-changes',
+  lightbulb: 'lightbulb',
+  'auto-awesome': 'auto-awesome',
+  'smart-toy': 'smart-toy',
+  'fitness-center': 'fitness-center',
+  'directions-walk': 'directions-walk',
+} as const;
 
-/**
- * Add your SF Symbols to Material Icons mappings here.
- * - see Material Icons in the [Icons Directory](https://icons.expo.fyi).
- * - see SF Symbols in the [SF Symbols](https://developer.apple.com/sf-symbols/) app.
- */
-const MAPPING = {
-  'house.fill': 'home',
-  'paperplane.fill': 'send',
-  'chevron.left.forwardslash.chevron.right': 'code',
-  'chevron.right': 'chevron-right',
-} as IconMapping;
+export type IoniconName = keyof typeof ICON_NAMES;
+export type MaterialIconName = ComponentProps<typeof MaterialIcons>['name'];
 
-/**
- * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
- * This ensures a consistent look across platforms, and optimal resource usage.
- * Icon `name`s are based on SF Symbols and require manual mapping to Material Icons.
- */
 export function IconSymbol({
   name,
   size = 24,
   color,
   style,
 }: {
-  name: IconSymbolName;
+  name: IoniconName;
   size?: number;
   color: string | OpaqueColorValue;
   style?: StyleProp<TextStyle>;
-  weight?: SymbolWeight;
 }) {
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+  return <MaterialIcons color={color} size={size} name={ION_ICONS[name] as MaterialIconName} style={style} />;
 }
+
+const ION_ICONS: Record<string, string> = {
+  house: 'home',
+  person: 'person',
+  heart: 'favorite',
+  clipboard: 'assignment',
+  document: 'description',
+  bell: 'notifications',
+  'chart-bar': 'bar-chart',
+  star: 'star',
+  checkmark: 'check-circle',
+  clock: 'schedule',
+  warning: 'warning',
+  info: 'info',
+  'plus-circle': 'add-circle',
+  gear: 'settings',
+  help: 'help',
+  'menu-book': 'menu-book',
+  'local-hospital': 'local-hospital',
+  'medical-services': 'medical-services',
+  'monitor-heart': 'monitor-heart',
+  accessibility: 'accessibility',
+  school: 'school',
+  'trending-up': 'trending-up',
+  'trending-down': 'trending-down',
+  'arrow-forward': 'arrow-forward',
+  'arrow-back': 'arrow-back',
+  close: 'close',
+  menu: 'menu',
+  search: 'search',
+  'filter-list': 'filter-list',
+  'grid-view': 'grid-view',
+  list: 'list',
+  calendar: 'calendar-today',
+  timelapse: 'timelapse',
+  group: 'group',
+  people: 'people',
+  phone: 'phone',
+  mail: 'email',
+  lock: 'lock',
+  visibility: 'visibility',
+  'visibility-off': 'visibility-off',
+  delete: 'delete',
+  edit: 'edit',
+  share: 'share',
+  download: 'download',
+  cloud: 'cloud',
+  'cloud-done': 'cloud-done',
+  wifi: 'wifi',
+  'battery-full': 'battery-full',
+  thermostat: 'thermostat',
+  air: 'air',
+  'water-drop': 'water-drop',
+  'favorite-border': 'favorite-border',
+  psychology: 'psychology',
+  medication: 'medication',
+  hotel: 'hotel',
+  'medical-information': 'medical-information',
+  'line-weight': 'line-weight',
+  'insert-drive-file': 'insert-drive-file',
+  folder: 'folder',
+  flag: 'flag',
+  'track-changes': 'track-changes',
+  lightbulb: 'lightbulb',
+  'auto-awesome': 'auto-awesome',
+  'smart-toy': 'smart-toy',
+  'fitness-center': 'fitness-center',
+  'directions-walk': 'directions-walk',
+};

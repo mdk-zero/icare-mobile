@@ -89,6 +89,35 @@ export interface AIRecommendation {
   priority: 'high' | 'medium' | 'low';
 }
 
+export interface TPRRecord {
+  id: string;
+  patientId: string;
+  date: string;
+  time: string;
+  temperature: number;
+  pulse: number;
+  respiration: number;
+  signature: string;
+}
+
+export interface IVFRecord {
+  id: string;
+  patientId: string;
+  date: string;
+  time: string;
+  ivFluids: number;
+  oralIntake: number;
+  urineOutput: number;
+  vomitus: number;
+  drainage: number;
+  heartRate: number;
+  bloodPressureSystolic: number;
+  bloodPressureDiastolic: number;
+  temperature: number;
+  notes: string;
+  signature: string;
+}
+
 export const mockPatients: Patient[] = [
   {
     id: '1',
@@ -386,7 +415,7 @@ export const mockEHRRecords: EHRRecord[] = [
     patientId: '3',
     date: '2024-01-24T09:00:00',
     type: 'progress',
-    content: 'Patient血糖控制良好.继续当前糖尿病管理计划.',
+    content: 'Patient blood sugar well controlled. Continue current diabetes management plan.',
     author: 'Maria Santos, RN',
   },
 ];
@@ -498,4 +527,342 @@ export function detectVitalAnomaly(vital: VitalSign): boolean {
   if (oxygenSaturation < 95) return true;
   
   return false;
+}
+
+export const mockTPRRecords: TPRRecord[] = [
+  {
+    id: '1',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '06:00',
+    temperature: 37.2,
+    pulse: 78,
+    respiration: 18,
+    signature: 'Maria Santos, RN',
+  },
+  {
+    id: '2',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '10:00',
+    temperature: 37.5,
+    pulse: 82,
+    respiration: 20,
+    signature: 'Maria Santos, RN',
+  },
+  {
+    id: '3',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '14:00',
+    temperature: 37.8,
+    pulse: 85,
+    respiration: 19,
+    signature: 'Ana Reyes, RN',
+  },
+  {
+    id: '4',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '18:00',
+    temperature: 37.4,
+    pulse: 80,
+    respiration: 18,
+    signature: 'Ana Reyes, RN',
+  },
+  {
+    id: '5',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '22:00',
+    temperature: 37.3,
+    pulse: 76,
+    respiration: 17,
+    signature: 'Maria Santos, RN',
+  },
+  {
+    id: '6',
+    patientId: '2',
+    date: '2024-01-24',
+    time: '06:00',
+    temperature: 36.8,
+    pulse: 72,
+    respiration: 16,
+    signature: 'Liza Torres, RN',
+  },
+  {
+    id: '7',
+    patientId: '2',
+    date: '2024-01-24',
+    time: '12:00',
+    temperature: 37.0,
+    pulse: 75,
+    respiration: 18,
+    signature: 'Liza Torres, RN',
+  },
+  {
+    id: '8',
+    patientId: '2',
+    date: '2024-01-24',
+    time: '18:00',
+    temperature: 37.2,
+    pulse: 78,
+    respiration: 17,
+    signature: 'Liza Torres, RN',
+  },
+  {
+    id: '9',
+    patientId: '3',
+    date: '2024-01-24',
+    time: '08:00',
+    temperature: 38.2,
+    pulse: 95,
+    respiration: 22,
+    signature: 'Jennifer Cruz, RN',
+  },
+  {
+    id: '10',
+    patientId: '3',
+    date: '2024-01-24',
+    time: '14:00',
+    temperature: 38.5,
+    pulse: 98,
+    respiration: 24,
+    signature: 'Jennifer Cruz, RN',
+  },
+  {
+    id: '11',
+    patientId: '4',
+    date: '2024-01-24',
+    time: '06:00',
+    temperature: 37.1,
+    pulse: 80,
+    respiration: 18,
+    signature: 'Rachel Green, RN',
+  },
+  {
+    id: '12',
+    patientId: '5',
+    date: '2024-01-24',
+    time: '08:00',
+    temperature: 36.9,
+    pulse: 70,
+    respiration: 16,
+    signature: 'Rachel Green, RN',
+  },
+];
+
+export const mockIVFRecords: IVFRecord[] = [
+  {
+    id: '1',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '06:00',
+    ivFluids: 500,
+    oralIntake: 200,
+    urineOutput: 300,
+    vomitus: 0,
+    drainage: 0,
+    heartRate: 78,
+    bloodPressureSystolic: 120,
+    bloodPressureDiastolic: 80,
+    temperature: 37.2,
+    notes: 'Patient stable overnight',
+    signature: 'Maria Santos, RN',
+  },
+  {
+    id: '2',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '10:00',
+    ivFluids: 500,
+    oralIntake: 150,
+    urineOutput: 250,
+    vomitus: 0,
+    drainage: 0,
+    heartRate: 82,
+    bloodPressureSystolic: 125,
+    bloodPressureDiastolic: 82,
+    temperature: 37.5,
+    notes: 'Tolerating oral intake well',
+    signature: 'Maria Santos, RN',
+  },
+  {
+    id: '3',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '14:00',
+    ivFluids: 500,
+    oralIntake: 200,
+    urineOutput: 350,
+    vomitus: 0,
+    drainage: 0,
+    heartRate: 85,
+    bloodPressureSystolic: 122,
+    bloodPressureDiastolic: 80,
+    temperature: 37.8,
+    notes: 'Encouraged to drink more fluids',
+    signature: 'Ana Reyes, RN',
+  },
+  {
+    id: '4',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '18:00',
+    ivFluids: 500,
+    oralIntake: 250,
+    urineOutput: 400,
+    vomitus: 0,
+    drainage: 0,
+    heartRate: 80,
+    bloodPressureSystolic: 118,
+    bloodPressureDiastolic: 78,
+    temperature: 37.4,
+    notes: 'Good urine output',
+    signature: 'Ana Reyes, RN',
+  },
+  {
+    id: '5',
+    patientId: '1',
+    date: '2024-01-24',
+    time: '22:00',
+    ivFluids: 500,
+    oralIntake: 150,
+    urineOutput: 250,
+    vomitus: 0,
+    drainage: 0,
+    heartRate: 76,
+    bloodPressureSystolic: 115,
+    bloodPressureDiastolic: 75,
+    temperature: 37.3,
+    notes: 'Patient resting',
+    signature: 'Maria Santos, RN',
+  },
+  {
+    id: '6',
+    patientId: '2',
+    date: '2024-01-24',
+    time: '06:00',
+    ivFluids: 1000,
+    oralIntake: 0,
+    urineOutput: 200,
+    vomitus: 50,
+    drainage: 100,
+    heartRate: 72,
+    bloodPressureSystolic: 110,
+    bloodPressureDiastolic: 70,
+    temperature: 36.8,
+    notes: 'Post-operative, NPO',
+    signature: 'Liza Torres, RN',
+  },
+  {
+    id: '7',
+    patientId: '2',
+    date: '2024-01-24',
+    time: '12:00',
+    ivFluids: 1000,
+    oralIntake: 0,
+    urineOutput: 350,
+    vomitus: 0,
+    drainage: 120,
+    heartRate: 75,
+    bloodPressureSystolic: 112,
+    bloodPressureDiastolic: 72,
+    temperature: 37.0,
+    notes: 'Drainage decreasing',
+    signature: 'Liza Torres, RN',
+  },
+  {
+    id: '8',
+    patientId: '2',
+    date: '2024-01-24',
+    time: '18:00',
+    ivFluids: 1000,
+    oralIntake: 50,
+    urineOutput: 400,
+    vomitus: 0,
+    drainage: 80,
+    heartRate: 78,
+    bloodPressureSystolic: 115,
+    bloodPressureDiastolic: 75,
+    temperature: 37.2,
+    notes: 'Passed flatus',
+    signature: 'Liza Torres, RN',
+  },
+  {
+    id: '9',
+    patientId: '3',
+    date: '2024-01-24',
+    time: '08:00',
+    ivFluids: 1000,
+    oralIntake: 100,
+    urineOutput: 150,
+    vomitus: 200,
+    drainage: 0,
+    heartRate: 95,
+    bloodPressureSystolic: 130,
+    bloodPressureDiastolic: 85,
+    temperature: 38.2,
+    notes: 'Fever, antiemetic given',
+    signature: 'Jennifer Cruz, RN',
+  },
+  {
+    id: '10',
+    patientId: '3',
+    date: '2024-01-24',
+    time: '14:00',
+    ivFluids: 1000,
+    oralIntake: 50,
+    urineOutput: 100,
+    vomitus: 300,
+    drainage: 0,
+    heartRate: 98,
+    bloodPressureSystolic: 125,
+    bloodPressureDiastolic: 82,
+    temperature: 38.5,
+    notes: 'Continuing antiemetics',
+    signature: 'Jennifer Cruz, RN',
+  },
+  {
+    id: '11',
+    patientId: '4',
+    date: '2024-01-24',
+    time: '06:00',
+    ivFluids: 500,
+    oralIntake: 300,
+    urineOutput: 450,
+    vomitus: 0,
+    drainage: 0,
+    heartRate: 80,
+    bloodPressureSystolic: 128,
+    bloodPressureDiastolic: 82,
+    temperature: 37.1,
+    notes: 'Recovery going well',
+    signature: 'Rachel Green, RN',
+  },
+  {
+    id: '12',
+    patientId: '5',
+    date: '2024-01-24',
+    time: '08:00',
+    ivFluids: 500,
+    oralIntake: 250,
+    urineOutput: 350,
+    vomitus: 0,
+    drainage: 0,
+    heartRate: 70,
+    bloodPressureSystolic: 118,
+    bloodPressureDiastolic: 75,
+    temperature: 36.9,
+    notes: 'Stable condition',
+    signature: 'Rachel Green, RN',
+  },
+];
+
+export function getTPRForPatient(patientId: string): TPRRecord[] {
+  return mockTPRRecords.filter((t) => t.patientId === patientId);
+}
+
+export function getIVFForPatient(patientId: string): IVFRecord[] {
+  return mockIVFRecords.filter((i) => i.patientId === patientId);
 }

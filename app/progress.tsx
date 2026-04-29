@@ -20,10 +20,10 @@ export default function ProgressScreen() {
 
       <View style={styles.statsGrid}>
         <View style={styles.statItem}>
-          <StatCard title="Overall Score" value={`${avgScore}%`} icon="📊" color={avgScore >= 70 ? '#16a34a' : '#dc2626'} />
+          <StatCard title="Overall Score" value={`${avgScore}%`} icon="bar-chart" color={avgScore >= 70 ? '#16a34a' : '#dc2626'} />
         </View>
         <View style={styles.statItem}>
-          <StatCard title="Activities" value={mockPerformanceLogs.length} icon="📈" color="#1B6B7B" />
+          <StatCard title="Activities" value={mockPerformanceLogs.length} icon="fitness-center" color="#1B6B7B" />
         </View>
       </View>
 

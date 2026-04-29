@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/theme';
 
 interface StatCardProps {
@@ -25,23 +26,17 @@ export function StatCard({
 }: StatCardProps) {
   const getTrendColor = () => {
     switch (trend) {
-      case 'up':
-        return '#16a34a';
-      case 'down':
-        return '#dc2626';
-      default:
-        return '#6b7280';
+      case 'up': return '#16a34a';
+      case 'down': return '#dc2626';
+      default: return '#6b7280';
     }
   };
 
   const getTrendIcon = () => {
     switch (trend) {
-      case 'up':
-        return '↑';
-      case 'down':
-        return '↓';
-      default:
-        return '→';
+      case 'up': return 'trending-up';
+      case 'down': return 'trending-down';
+      default: return 'remove';
     }
   };
 
@@ -55,12 +50,12 @@ export function StatCard({
     >
       <View style={styles.header}>
         <View style={[styles.iconContainer, { backgroundColor: `${color}15` }]}>
-          <Text style={[styles.icon, { color }]}>{icon || '📊'}</Text>
+          <Ionicons name={(icon as any) || 'bar-chart'} size={20} color={color} />
         </View>
         {trend && trendValue && (
           <View style={styles.trend}>
             <Text style={[styles.trendText, { color: getTrendColor() }]}>
-              {getTrendIcon()} {trendValue}
+              {trend === 'up' ? '↑' : trend === 'down' ? '↓' : '→'} {trendValue}
             </Text>
           </View>
         )}
@@ -97,9 +92,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  icon: {
-    fontSize: 18,
   },
   trend: {
     paddingHorizontal: 8,

@@ -13,7 +13,7 @@ import {
 import { useRouter } from 'expo-router';
 import { Colors } from '@/constants/theme';
 import { useAuth } from '@/hooks/useAuth';
-import logoImg from '@/assets/images/logo-no-bg.png';
+import logoImg from '@/assets/images/logo-pill.png';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
